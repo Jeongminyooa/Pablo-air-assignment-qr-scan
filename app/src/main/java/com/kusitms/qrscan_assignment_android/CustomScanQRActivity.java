@@ -8,13 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.journeyapps.barcodescanner.camera.CameraSettings;
+import com.kusitms.qrscan_assignment_android.databinding.ActivityCustomScanQrBinding;
 
 public class CustomScanQRActivity extends AppCompatActivity implements DecoratedBarcodeView.TorchListener {
 
     private CaptureManager capture;
+    private ActivityCustomScanQrBinding binding;
+
     private DecoratedBarcodeView barcodeScannerView;
     private ImageButton btnSwitchFlash;
     private Boolean switchFlashlightButtonCheck;
@@ -22,12 +25,13 @@ public class CustomScanQRActivity extends AppCompatActivity implements Decorated
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_scan_qr);
+        binding = ActivityCustomScanQrBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         switchFlashlightButtonCheck = true;
 
-        btnSwitchFlash = findViewById(R.id.btnNoFlash);
-        barcodeScannerView = findViewById(R.id.decoratedBarcodeView);
+        btnSwitchFlash = binding.btnFlash;
+        barcodeScannerView = binding.decoratedBarcodeView;
 
         if(!hasFlash()) {
             btnSwitchFlash.setVisibility(View.GONE);
@@ -46,7 +50,9 @@ public class CustomScanQRActivity extends AppCompatActivity implements Decorated
             }
         });
 
-
+        binding.btnCamera.setOnClickListener(v -> {
+            changeCamera();
+        });
     }
 
     @Override
@@ -78,13 +84,13 @@ public class CustomScanQRActivity extends AppCompatActivity implements Decorated
      */
     @Override
     public void onTorchOn() {
-        btnSwitchFlash.setImageResource(R.drawable.no_flash);
+        btnSwitchFlash.setImageResource(R.drawable.ic_flash);
         switchFlashlightButtonCheck = false;
     }
 
     @Override
     public void onTorchOff() {
-        btnSwitchFlash.setImageResource(R.drawable.no_flash);
+        btnSwitchFlash.setImageResource(R.drawable.ic_no_flash);
         switchFlashlightButtonCheck = true;
     }
 
@@ -93,4 +99,18 @@ public class CustomScanQRActivity extends AppCompatActivity implements Decorated
                 .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
+    private void changeCamera() {
+        onPause();
+
+        CameraSettings cameraSettings = barcodeScannerView.getCameraSettings();
+        if(cameraSettings.getRequestedCameraId() == 1) {
+            cameraSettings.setRequestedCameraId(0);
+            barcodeScannerView.setCameraSettings(cameraSettings);
+        } else {
+            cameraSettings.setRequestedCameraId(1);
+            barcodeScannerView.setCameraSettings(cameraSettings);
+        }
+
+        onResume();
+    }
 }
