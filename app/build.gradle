@@ -18,6 +18,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
+        buildConfigField "String", "AES_SERVER_KEY", properties["AES_SERVER_KEY"]
+        buildConfigField "String", "AES_CLIENT_KEY", properties["AES_CLIENT_KEY"]
     }
 
     buildTypes {

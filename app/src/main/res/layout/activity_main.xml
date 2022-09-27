@@ -6,28 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qr_scan_btn_style"
+        android:text="start"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.461" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="183dp"
         android:layout_height="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnQRScan"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859"
+        app:layout_constraintVertical_bias="0.898"
         app:srcCompat="@drawable/allivery_logo1" />
 
-    <Button
-        android:id="@+id/btnQRScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="QR 스캔"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:background="@drawable/qr_scan_btn_style"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
