@@ -37,7 +37,6 @@ import com.kusitms.qrscan_assignment_android.util.AES256Util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +45,6 @@ import java.util.UUID;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class BluetoothActivity extends AppCompatActivity {
@@ -58,6 +56,7 @@ public class BluetoothActivity extends AppCompatActivity {
     Button mBtnBluetoothOn;
     Button mBtnBluetoothOff;
     Button mBtnConnect;
+
 
     private BluetoothAdapter mBluetoothAdapter;
     private Set<BluetoothDevice> mPairedDevices;
@@ -315,7 +314,8 @@ public class BluetoothActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<ResponseResult> call, Response<ResponseResult> response) {
                             if (response.isSuccessful()) {
-                                Log.d(TAG, "통신 응답 성공");
+                                Log.d(TAG, response.body().toString());
+
                                 new android.app.AlertDialog.Builder(BluetoothActivity.this)
                                         .setTitle("인증에 성공했습니다.")
                                         .setMessage("잠금 장치가 해제되었습니다.\n배송지에서 물품을 가져가세요.")
@@ -342,7 +342,6 @@ public class BluetoothActivity extends AppCompatActivity {
                                         .show();
                             }
                         }
-
                         @Override
                         public void onFailure(Call<ResponseResult> call, Throwable t) {
                             Log.e(TAG, "통신 오류" + t.getMessage());

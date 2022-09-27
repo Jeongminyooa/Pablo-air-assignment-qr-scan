@@ -56,7 +56,6 @@ public class AES256Util {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return serialNumber;
     }
 }

@@ -10,10 +10,7 @@ public class ResponseResult {
     @NonNull
     @Override
     public String toString() {
-        return super.toString();
-    }
-
-    public String getData() {
-        return data;
+        return "{ statusCode : " + statusCode + "\n" +
+                "response message : " + responseMessage + " } ";
     }
 }
