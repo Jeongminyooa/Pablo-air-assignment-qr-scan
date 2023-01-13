@@ -1,4 +1,9 @@
-## [한국대항생IT경영학회 26기 x 파블로항공] 기업 프로젝트 개발 E조
+## [한국대학생IT경영학회 26기 x 파블로항공] 기업 프로젝트 개발 E조
+<div align="center">
+    <img width="300px" alt="image" src="https://user-images.githubusercontent.com/78305431/212356140-d25daffc-513c-4e8c-8875-c104733835b7.png">
+    <div>한국대학생IT경영학회 26기 x 파블로항공 기업 프로젝트 <b>대상</b> 수상</div>
+</div>
+
 
 ### 🙋‍♀️ 소개
 - 큐시즘 26기, 파블로항공과 연계한 기업 프로젝트 <개발 과제 E조> 결과물입니다.
